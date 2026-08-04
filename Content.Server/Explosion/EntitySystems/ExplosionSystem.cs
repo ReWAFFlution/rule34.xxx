@@ -21,6 +21,7 @@ using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
 using Content.Shared.Projectiles;
 using Content.Shared.Throwing;
+using Content.Shared._Arcane.CCVars;
 using Robust.Server.GameStates;
 using Robust.Server.Player;
 using Robust.Shared.Audio.Systems;
@@ -73,6 +74,12 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
     public const ushort DefaultTileSize = 1;
 
     public const int MaxExplosionAudioRange = 30;
+
+    // Arcane-Start
+    private static readonly EntProtoId ShockWaveSmall = "ExplosionEffectShockWaveSmall";
+    private static readonly EntProtoId ShockWave = "ExplosionEffectShockWave";
+    private static readonly EntProtoId ShockWaveLarge = "ExplosionEffectShockWaveLarge";
+    // Arcane-End
 
     public override void Initialize()
     {
@@ -362,6 +369,8 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         // camera shake
         CameraShake(iterationIntensity.Count * 4f, pos, queued.TotalIntensity);
 
+        SpawnShockWave(pos, queued.TotalIntensity); // Arcane
+
         //For whatever bloody reason, sound system requires ENTITY coordinates.
         var mapEntityCoords = _transformSystem.ToCoordinates(_map.GetMap(pos.MapId), pos);
 
@@ -434,4 +443,20 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
                 _recoilSystem.KickCamera(uid, -delta.Normalized() * effect);
         }
     }
+    // Arcane-Start
+    private void SpawnShockWave(MapCoordinates epicenter, float totalIntensity)
+    {
+        // if (!_cfg.GetCVar(ACCVars.ExplosionShockWaveEnabled))
+        //     return;
+
+        var proto = totalIntensity switch
+        {
+            < 10f => ShockWaveSmall,
+            > 200f => ShockWaveLarge,
+            _ => ShockWave,
+        };
+
+        Spawn(proto, epicenter);
+    }
+    // Arcane-End
 }
