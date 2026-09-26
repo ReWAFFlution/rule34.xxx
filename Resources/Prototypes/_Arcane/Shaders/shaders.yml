@@ -12,8 +12,3 @@
   id: ArcaneHairGradient
   kind: source
   path: "/Textures/_Arcane/Shaders/hair_gradient.swsl"
-
-- type: shader
-  id: ShockWave
-  kind: source
-  path: "/Textures/_Arcane/Shaders/shock_wave.swsl"
