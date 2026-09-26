@@ -13,7 +13,6 @@ public sealed partial class BulletTrailComponent : SharedBulletTrailComponent
     public BulletTrailComponent()
     {
         var defaultTrail = TrailSettings.Default;
-        Enabled = defaultTrail.Enabled;
         Scale = defaultTrail.Scale;
         СreationDistanceThresholdSquared = defaultTrail.СreationDistanceThresholdSquared;
         СreationMethod = defaultTrail.СreationMethod;
