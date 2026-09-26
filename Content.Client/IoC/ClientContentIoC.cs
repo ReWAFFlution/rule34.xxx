@@ -2,6 +2,7 @@
 
 using Content.Client._RMC14.LinkAccount;
 using Content.Client._Arcane.DiscordRoles;
+using Content.Client._Arcane.Trail.Line.Manager;
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
@@ -69,6 +70,7 @@ namespace Content.Client.IoC
             collection.Register<LinkAccountManager>(); // RMC14
             collection.Register<DiscordRoleManager>(); // Arcane
             collection.Register<ISharedDiscordRoleManager, DiscordRoleManager>(); // Arcane
+            collection.Register<ITrailLineManager, TrailSplineManager>();
             collection.Register<ClientsidePlaytimeTrackingManager>();
         }
     }
