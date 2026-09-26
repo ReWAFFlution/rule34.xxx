@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
-using Content.Shared._Arcane.Spline;
+using Content.Shared._White.Spline;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 using Vector4 = System.Numerics.Vector4;
 
-namespace Content.Shared._Arcane.Trail;
+namespace Content.Shared._White.Trail;
 
 [NetworkedComponent]
 public abstract partial class SharedBulletTrailComponent : Component, ITrailSettings
@@ -49,7 +49,7 @@ public abstract partial class SharedBulletTrailComponent : Component, ITrailSett
 
     [DataField("creationMethod")]
     [ViewVariables(VVAccess.ReadWrite)]
-    public virtual SegmentCreationMethod CreationMethod { get; set; }
+    public virtual SegmentCreationMethod СreationMethod { get; set; }
 
     [DataField("gradient", required: true)]
     [ViewVariables(VVAccess.ReadWrite)]
