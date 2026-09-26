@@ -75,4 +75,10 @@ public sealed partial class ACCVars
     /// </summary>
     public static readonly CVarDef<bool> RestrictedCustomSpeciesNames =
         CVarDef.Create("content.restricted_custom_species_names", true, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Whether concealable trails (bullet tracers) get rendered at all.
+    /// </summary>
+    public static readonly CVarDef<bool> ShowTrails =
+        CVarDef.Create("trail.show_trails", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 }

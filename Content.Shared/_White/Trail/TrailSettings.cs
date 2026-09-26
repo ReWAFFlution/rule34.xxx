@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
-using Content.Shared._White.Spline;
+using Content.Shared._Arcane.Spline;
 using Robust.Shared.Serialization;
 using Vector4 = System.Numerics.Vector4;
 
-namespace Content.Shared._White.Trail;
+namespace Content.Shared._Arcane.Trail;
 
 [DataDefinition]
 [Serializable, NetSerializable]
@@ -19,7 +19,7 @@ public sealed partial class TrailSettings : ITrailSettings
 
     public float СreationDistanceThresholdSquared { get; set; } = 0.1f;
 
-    public SegmentCreationMethod СreationMethod { get; set; } = SegmentCreationMethod.OnFrameUpdate;
+    public SegmentCreationMethod CreationMethod { get; set; } = SegmentCreationMethod.OnFrameUpdate;
 
     public Vector2 CreationOffset { get; set; } = Vector2.Zero;
 
@@ -48,7 +48,7 @@ public sealed partial class TrailSettings : ITrailSettings
         into.Enabled = from.Enabled;
         into.Scale = from.Scale;
         into.СreationDistanceThresholdSquared = from.СreationDistanceThresholdSquared;
-        into.СreationMethod = from.СreationMethod;
+        into.CreationMethod = from.CreationMethod;
         into.CreationOffset = from.CreationOffset;
         into.Gravity = from.Gravity;
         into.MaxRandomWalk = from.MaxRandomWalk;
@@ -82,7 +82,7 @@ public interface ITrailSettings
 
     float СreationDistanceThresholdSquared { get; set; }
 
-    SegmentCreationMethod СreationMethod { get; set; }
+    SegmentCreationMethod CreationMethod { get; set; }
 
     Vector4[] Gradient { get; set; }
 
